@@ -1,0 +1,51 @@
+[
+    {
+        "_id": "01",
+        "title": "wedding-photography",
+        "price": 100,
+        "img": "https://i.ibb.co/kykTr64/wedding-photography.jpg",
+        "description": "We have a team of artists with a whole new setup of equipment and bright technicians. Capable of handling any media events like Photography, Cinematography, Music video, etc. Cover your wedding / Event with a photographer on a limited budget, we’ll give you the best quality.",
+        "provider-name": "Md Alamin"
+    },
+    {
+        "_id": "02",
+        "title": "birthday-photography",
+        "price": 99,
+        "img": "https://i.ibb.co/4dBtwSC/birthday-photography.jpg",
+        "description": "We have a team of artists with a whole new setup of equipment and bright technicians. Capable of handling any media events like Photography, Cinematography, Music video, etc. Cover your wedding / Event with a photographer on a limited budget, we’ll give you the best quality.",
+        "provider-name": "Md Alamin"
+    },
+    {
+        "_id": "03",
+        "title": "Portrait-Photography",
+        "price": 50,
+        "img": "https://i.ibb.co/5B7L7ZP/Portrait-Photography.jpg",
+        "description": "We have a team of artists with a whole new setup of equipment and bright technicians. Capable of handling any media events like Photography, Cinematography, Music video, etc. Cover your wedding / Event with a photographer on a limited budget, we’ll give you the best quality.",
+        "provider-name": "Md Alamin"
+    },
+    {
+        "_id": "04",
+        "title": "Event-Photography",
+        "price": 120,
+        "img": "https://i.ibb.co/v3nW8MJ/Event-Photography.jpg",
+        "description": "We have a team of artists with a whole new setup of equipment and bright technicians. Capable of handling any media events like Photography, Cinematography, Music video, etc. Cover your wedding / Event with a photographer on a limited budget, we’ll give you the best quality.",
+        "provider-name": "Md Alamin"
+    },
+    {
+        "_id": "05",
+        "title": "Food-photography",
+        "price": 150,
+        "img": "https://i.ibb.co/r5GCVbX/Food-photography-1.jpg",
+        "description": "We have a team of artists with a whole new setup of equipment and bright technicians. Capable of handling any media events like Photography, Cinematography, Music video, etc. Cover your wedding / Event with a photographer on a limited budget, we’ll give you the best quality.",
+        "provider-name": "Md Alamin"
+    },
+    {
+        "_id": "06",
+        "title": "Product-photography",
+        "price": 200,
+        "img": "https://i.ibb.co/jGhqSmP/Product-photography.jpg",
+        "description": "We have a team of artists with a whole new setup of equipment and bright technicians. Capable of handling any media events like Photography, Cinematography, Music video, etc. Cover your wedding / Event with a photographer on a limited budget, we’ll give you the best quality.",
+        "provider-name": "Md Alamin"
+    }
+]
+
