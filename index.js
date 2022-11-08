@@ -33,18 +33,28 @@ async function run(){
 
         app.get('/services/:id', async(req, res) => {
             const id = req.params.id;
-            console.log("services id md",id);
             const query = { _id: ObjectId(id) };
             const service = await servicesCollection.findOne(query);
-            console.log(service);
             res.send(service);
 
         });
 
         app.post('/review', async(req, res) => {
             const review = req.body;
-            console.log(review);
             const result = await reviewsCollection.insertOne(review);
+            console.log(result)
+        })
+        app.get('/reviews', async(req, res) => {
+            const query = {}
+            const cursor = reviewsCollection.find(query);
+            const reviews = await cursor.toArray();
+            res.send(reviews)
+        })
+
+        app.post('/add-service', async(req, res) => {
+            const addService = req.body;
+            console.log(addService);
+            const result = await servicesCollection.insertOne(addService);
             console.log(result)
         })
 
