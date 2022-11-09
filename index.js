@@ -16,24 +16,24 @@ const uri = `mongodb+srv://${user}:${password}@cluster0.hdi07kd.mongodb.net/?ret
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-async function run(){
-    try{
+async function run() {
+    try {
         const servicesCollection = client.db('photography-services').collection('services');
         const reviewsCollection = client.db('photography-services').collection('reviews');
-        app.get('/services-home', async(req, res) => {
+        app.get('/services-home', async (req, res) => {
             const query = {}
             const cursor = servicesCollection.find(query);
             const servicesHome = await cursor.limit(3).toArray();
             res.send(servicesHome);
         });
-        app.get('/services', async(req, res) => {
+        app.get('/services', async (req, res) => {
             const query = {}
             const cursor = servicesCollection.find(query);
             const services = await cursor.toArray();
             res.send(services);
         });
 
-        app.get('/services/:id', async(req, res) => {
+        app.get('/services/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
             const service = await servicesCollection.findOne(query);
@@ -41,31 +41,52 @@ async function run(){
 
         });
 
-        app.post('/review', async(req, res) => {
+        app.post('/review', async (req, res) => {
             const review = req.body;
             const result = await reviewsCollection.insertOne(review);
             console.log(result)
         })
-        app.get('/reviews', async(req, res) => {
+        app.get('/reviews', async (req, res) => {
             const query = {}
             const cursor = reviewsCollection.find(query);
             const reviews = await cursor.toArray();
             res.send(reviews)
         })
-        app.get('/my-reviews', async(req, res) => {
-            let query = {};
-            if(req.query.email){
+        app.delete('/reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            console.log(id)
+            const query = { _id: ObjectId(id) }
+            const result = await reviewsCollection.deleteOne(query);
+            console.log(result)
+            res.send(result)
+        })
+
+        app.get('/service-reviews', async (req, res) => {
+            let query = {}
+            if (req.query.title) {
                 query = {
-                    email : req.query.email
+                    title: req.query.title
                 }
             }
-            console.log("query", query)
+            const cursor = reviewsCollection.find(query);
+            const serviceReviews = await cursor.toArray();
+            res.send(serviceReviews);
+        })
+
+
+        app.get('/my-reviews', async (req, res) => {
+            let query = {};
+            if (req.query.email) {
+                query = {
+                    email: req.query.email
+                }
+            }
             const cursor = reviewsCollection.find(query);
             const myReviews = await cursor.toArray();
             res.send(myReviews)
         })
 
-        app.post('/add-service', async(req, res) => {
+        app.post('/add-service', async (req, res) => {
             const addService = req.body;
             console.log(addService);
             const result = await servicesCollection.insertOne(addService);
@@ -75,7 +96,7 @@ async function run(){
 
 
     }
-    finally{
+    finally {
 
     }
 }
@@ -83,7 +104,7 @@ run().catch(error => {
     console.log(error);
 })
 
-app.get('/', (req, res)=> {
+app.get('/', (req, res) => {
     res.send("my services server is running...");
 })
 
