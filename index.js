@@ -13,7 +13,7 @@ const user = process.env.USER_NAME;
 const password = process.env.PASSWORD;
 
 const uri = `mongodb+srv://${user}:${password}@cluster0.hdi07kd.mongodb.net/?retryWrites=true&w=majority`;
-console.log(uri);
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 async function run(){
@@ -51,6 +51,18 @@ async function run(){
             const cursor = reviewsCollection.find(query);
             const reviews = await cursor.toArray();
             res.send(reviews)
+        })
+        app.get('/my-reviews', async(req, res) => {
+            let query = {};
+            if(req.query.email){
+                query = {
+                    email : req.query.email
+                }
+            }
+            console.log("query", query)
+            const cursor = reviewsCollection.find(query);
+            const myReviews = await cursor.toArray();
+            res.send(myReviews)
         })
 
         app.post('/add-service', async(req, res) => {
